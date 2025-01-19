@@ -1,19 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './shared/pages/homePage/homePage.component';
-import { AboutPageComponent } from './shared/pages/homePage/aboutPage/aboutPage.component';
+import { AboutPageComponent } from './shared/pages/aboutPage/aboutPage.component';
+import { ContactPageComponent } from './shared/pages/contacPage/contacPage.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+  /* {
 
   path: 'home',
   component: HomePageComponent
-},{
+}, */
+{
   path: 'about',
   component: AboutPageComponent
 },{
+  path: 'contact',
+  component: ContactPageComponent
+},{
+  path: 'countries',
+  loadChildren: () => import('./countries/countries.module').then(m => m.CountriesModule)
+
+},
+{
   path: '**',
-  component: HomePageComponent
-}
+  redirectTo: 'countries'
+},
 ];
 
 @NgModule({
